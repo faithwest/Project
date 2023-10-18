@@ -34,6 +34,15 @@ header {
     color: black;
     user-select: none;
 }
+a.active, a:hover {
+    transition: .5s;
+
+}
+a:is(:link, :active, :visited).active {
+    color: #000000;
+    background-color: #fff;
+    border-radius: 4px 5px;
+}
 /*end header-----------------------*/
 .navigation a {
     text-decoration:none ;
@@ -106,6 +115,7 @@ header {
 }
 
 /*banner-------------------------*/
+/*register*/
 .wrapper {
     position: relative;
     width: 450px;
