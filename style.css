@@ -184,8 +184,11 @@ h2 {
 }
 
 p {
-    color: #fff;
+    color: #0a0909;
     line-height: 1.4;
+    font-size: 1.5em;
+    padding: 6px;
+    font-weight: 600;
 }
 
 ul {
@@ -196,6 +199,7 @@ ul {
 
 li {
     margin-bottom: 10px;
+    font-size: 1.5em;
 }
 
 strong {

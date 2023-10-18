@@ -5,38 +5,69 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Coding Contest Website</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Your CSS styles here */
+    </style>
 </head>
 <body>
   <header>
     <h1 class="logo">Kontests</h1>
   <nav class="navigation">
     <a href="index.html">Home</a>
-    <a href="Contests.html">Contests</a>
-    <a href="/test/Contacts.html">Contacts</a>
+    <a href="#contests">Contests</a>
+    <a href="#Contacts">Contacts</a>
     <button class="btn-register">Register</button>
 </nav>
 </header>
 <!-- header ends -->
-<!-- main starts  -->
-<main>
-  <!-- section about contests -->
-  <section id="about_contests">
-    <div class="container">
-      <p><b>What is a coding contest?</b><br>A coding contest is a competitive event where individuals or teams of programmers and developers compete to solve a set of coding problems or challenges within a specific time frame. These contests test their problem-solving skills, coding proficiency, and algorithmic knowledge.</p>
-      <h2>About Coding Contests</h2>
-      <p><strong>Coding contests are a unique way for programmers to push their boundaries and gain recognition in the coding community.</strong> </p>
-      <ul>
-          <li>Participants compete in real-time, striving to provide efficient solutions to problems in a limited time period.</li>
-          <li>Coding contests encourage creative thinking and the development of optimized code, allowing contestants to improve their programming skills.</li>
-          <li>They foster a sense of camaraderie among like-minded individuals and can lead to exciting career opportunities in the tech industry.</li>
-          <li>Contests can cover a wide range of topics, from data structures and algorithms to web development and artificial intelligence, offering something for programmers of all backgrounds.</li>
-          <li>Winning or performing well in coding contests can be a strong addition to a programmer's resume and help with job opportunities and internships.</li>
-          <li>Online platforms and websites host coding contests regularly, making it accessible to anyone interested in testing their coding skills.</li>
-          <li>Many coding contests are not only about competition but also about learning and collaboration, where participants share their knowledge and solutions.</li>
-      </ul>
-      
-    </div>
-  </section>
-</main>
+  
+<section id="contests">
+  <div class="container">
+    <p><b>What is a coding contest?</b><br>A competitive event where individuals or teams of programmers and developers compete .</p>
+    <h2>About Coding Contests</h2>
+    <p><strong>Coding contests are a unique way for programmers to push their boundaries and gain recognition in the coding community.</strong> </p>
+    <ul>
+      <p>Benefits Of Contest</p>
+      <li>Real-time competition for efficient problem-solving.</li>
+      <li>Code contests boost creativity and skills.</li>
+      <li>Foster camaraderie, lead to tech careers.</li>
+      <li>Cover diverse topics, suit all programmers.</li>
+      <li>Success enhances resumes, aids job prospects.</li>
+      <li>Online platforms host accessible coding contests.</li>
+      <li>Promote learning, collaboration, and knowledge sharing.</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      // Get all the navigation links
+      const navLinks = document.querySelectorAll(".navigation a");
+
+      // Add a click event listener to each link
+      navLinks.forEach(link => {
+          link.addEventListener("click", function(event) {
+              event.preventDefault(); // Prevent the default link behavior
+
+              // Get the target section's ID from the link's href
+              const targetId = link.getAttribute("href").substring(1);
+
+              // Find the target section by its ID
+              const targetSection = document.getElementById(targetId);
+
+              if (targetSection) {
+                  // Calculate the scroll position
+                  const offsetTop = targetSection.getBoundingClientRect().top + window.scrollY;
+
+                  // Scroll to the target section with smooth behavior
+                  window.scrollTo({
+                      top: offsetTop,
+                      behavior: "smooth"
+                  });
+              }
+          });
+      });
+  });
+  </script>
 </body>
 </html>
