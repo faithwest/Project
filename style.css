@@ -59,7 +59,7 @@ a:is(:link, :active, :visited).active {
     bottom: -6px;
     width: 100%;
     height: 3px;
-    background:#f7c5b1;
+    background:#8b480a;
     border-radius: 5px;
     transform: scaleX(0);
     transition: transform 0.5s;
@@ -74,11 +74,11 @@ a:is(:link, :active, :visited).active {
     width: 130px;
     height: 50px;
     background: transparent;
-    border: 2px solid #fff;
+    border: 2px solid #0e0a0a;
     outline: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 1.5em;
     color: #fff;
     font-weight: 500;
     margin-left: 40px;

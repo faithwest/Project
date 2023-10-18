@@ -6,24 +6,28 @@
     <title>Contact Us - Coding Contest Website</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Your CSS styles here */
+      
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f2f2f2;
+          display: flex;
+          justify-content: center;
+          align-items: center ;
+          min-height: 100vh;
+          background: url('/image/con.jpg') no-repeat;
+          background-size: cover;
         }
         header {
-            background: #007bff;
+            background: #325172;
             color: #fff;
             text-align: center;
             padding: 20px 0;
         }
         .logo {
-            font-size: 24px;
+            font-size: 2.5rem;
+            color: #fff;
         }
         .navigation {
             margin-top: 10px;
+            
         }
         .navigation a {
             color: #fff;
@@ -39,12 +43,39 @@
             cursor: pointer;
         }
         .container {
-            background: #fff;
+            background: #7fb2e9;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 8px 8px;
             margin: 20px;
         }
-    </style>
+       
+
+input[type="email" i] {
+    padding-block: 3px;
+    padding-inline: 4px;
+    margin: 4px 4px;
+    border-radius: 4px 4px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+/* styles for the "Name" and "Message" labels */
+label[for="name"] {
+    color: #333;
+  
+}
+
+label[for="message"] {
+    color: #333;
+
+    
+  }
+
+  </style>
 </head>
 <body>
   <header>
@@ -73,7 +104,7 @@
         <label for="message">Message:</label>
         <textarea id="message" name="message" rows="4" required></textarea>
       </div>
-      <button type="submit">Submit</button>
+      <button class="submit">Submit</button>
     </form>
   </section>
 </body>
