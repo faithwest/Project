@@ -1,4 +1,77 @@
 <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Data Display</title>
+</head>
+
+<body>
+    <h1>Contests</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Site</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Status</th>
+                <th>Contest Link</th>
+            </tr>
+        </thead>
+        <tbody id="contests-list"></tbody>
+    </table>
+     <style> body {
+        
+        justify-content: center;
+        align-items: center ;
+        min-height: 100vh;
+        background: #325172;
+        background-size: cover;
+        color: #faf9f9;
+        font-size: 1.5rem;
+       
+    }</style> 
+
+    <script>
+        
+        async function fetchDataAndRender() {
+            try {
+                const response = await fetch("https://kontests.net/api/v1/all");
+                const data = await response.json();
+
+                const contestsList = document.getElementById("contests-list");
+
+                if (data.length === 0) {
+                    contestsList.innerHTML = "<tr><td colspan='6'>No contests available</td></tr>";
+                } else {
+                    data.forEach(contest => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${contest.name}</td>
+                            <td>${contest.site}</td>
+                            <td>${new Date(contest.start_time).toUTCString()}</td>
+                            <td>${new Date(contest.end_time).toUTCString()}</td>
+                            <td>${contest.status}</td>
+                            <td><a href="${contest.url}" target="_blank">Contest Link</a></td>
+                        `;
+                        contestsList.appendChild(row);
+                    });
+                }
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            }
+        }
+
+ 
+        fetchDataAndRender();
+    </script>
+</body>
+
+</html>
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -6,21 +79,25 @@
     <title>Contests - Coding Contest Website</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Your CSS styles here */
+      
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f2f2f2;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    min-height: 100vh;
+    background: url('/image/pic.jpg') no-repeat;
+    background-size: cover;
+   
+}
         header {
-            background: #007bff;
+            background: #365980;
             color: #fff;
             text-align: center;
             padding: 20px 0;
         }
         .logo {
-            font-size: 24px;
+            font-size: 2.5rem;
+            color: #fff;
         }
         .navigation {
             margin-top: 10px;
@@ -51,26 +128,74 @@
     <h1 class="logo">Kontests</h1>
     <nav class="navigation">
         <a href="index.html">Home</a>
-        <a class="active" href="contest.html">Contests</a>
+        <a href="/contest.html">Contests</a>
         <a href="contact.html">Contacts</a>
         <button class="btn-register">Register</button>
     </nav>
   </header>
   
-  <section id="contests" class="container">
-    <h2>Coding Contests</h2>
-    <p>Explore the exciting world of coding contests and challenges:</p>
-    <ul>
-      <li>
-        <h3>Monthly Coding Challenge</h3>
-        <p>Test your coding skills in our monthly coding challenge. Win prizes and recognition!</p>
-      </li>
-      <li>
-        <h3>CodeMaster Championship</h3>
-        <p>Compete in our annual CodeMaster Championship and prove that you are the coding expert!</p>
-      </li>
-      <!-- Add more contest details here -->
-    </ul>
-  </section>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const apiUrl = "https://kontests.net/api/v1/all";
+    const futureContestsContainer = document.getElementById("future-contests");
+    const runningContestsContainer = document.getElementById("running-contests");
+
+    // Function to fetch contest data
+    function fetchContests() {
+        fetch(`https://kontests.net/api/v1/all/contest/${contest}`)
+            .then(response => response.json())
+            .then(data => {
+                const contests = data.contests;
+
+                const futureContests = contests.filter(contest => isFutureContest(contest));
+                const runningContests = contests.filter(contest => !isFutureContest(contest));
+
+                // Display contests in the respective tables
+                displayContests(futureContests, futureContestsContainer);
+                displayContests(runningContests, runningContestsContainer);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+   // Helper functions for filtering and displaying contests
+   function isFutureContest({ start_date }) {
+    return new Date().getTime() > new Date(start_date).getTime();
+    }
+    function getFormattedDate({ start_date }) {
+      let date = new Date(start_date);
+      return `${date.toLocaleString()} (${timeDifferenceInDays(new Date(), date)})`;
+      }
+      function timeDifferenceInDays(firstDate, secondDate){
+        var differenceInMs = Math.abs(secondDate - firstDate);
+        return Math.floor((differenceInMs / (1000 * 60 * 60 * 24)))
+        };
+        function createTableRow({ id, name, description, start_date, end_date }) {
+          const rowElement = document.createElement('tr');
+          const linkCell = document.createElement('td');
+          const detailsLink = document.createElement('a');
+          detailsLink.href = `details?id=${id}`;
+          detailsLink.textContent = 'Details';
+          linkCell.appendChild(detailsLink);
+          const nameCell = document.createElement('td');
+          nameCell.textContent = name;
+          const descrCell = document.createElement('td');
+          descrCell.textContent = description;
+          const startDateCell = document.createElement('td');
+          startDateCell.textContent = getFormattedDate({ start_date });
+          const endDateCell = document.createElement('td');
+          endDateCell.textContent = getFormattedDate({ end_date });
+          [linkCell, nameCell, descrCell, startDateCell, endDateCell].forEach(cell => rowElement.appendChild
+          (cell));
+          return rowElement;
+          }
+          function displayContests(contests, container) {
+            if (!container || !Array.isArray(contests)) throw Error('Invalid arguments passed');
+            contests.map(createTableRow).forEach(row => container.appendChild(row));
+            }
+
+
+
+          });
+  </script>
 </body>
-</html>
+</html> -->

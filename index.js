@@ -1,31 +1,4 @@
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Get all the navigation links
-//     const navLinks = document.querySelectorAll(".navigation a");
 
-//     // Add a click event listener to each link
-//     navLinks.forEach(link => {
-//         link.addEventListener("click", function(event) {
-//             event.preventDefault(); // Prevent the default link behavior
-
-//             // Get the target section's ID from the link's href
-//             const targetId = link.getAttribute("href").substring(1);
-
-//             // Find the target section by its ID
-//             const targetSection = document.getElementById(targetId);
-
-//             if (targetSection) {
-//                 // Calculate the scroll position
-//                 const offsetTop = targetSection.getBoundingClientRect().top + window.scrollY;
-
-//                 // Scroll to the target section with smooth behavior
-//                 window.scrollTo({
-//                     top: offsetTop,
-//                     behavior: "smooth"
-//                 });
-//             }
-//         });
-//     });
-// });
 const activePage = window.location.pathname;
 const navlinks = document.querySelectorAll('nav a')
 forEach(link => {
@@ -33,3 +6,22 @@ forEach(link => {
         link.classList.add(`active`);
     } 
 });
+// document.addEventListener("DOMContentLoaded", function () {
+//     const navLinks = document.querySelectorAll('nav a');
+
+//     // Function to handle click events on navigation links
+//     function handleNavClick(event) {
+//         // Remove the 'active' class from all navigation links
+//         navLinks.forEach(link => {
+//             link.classList.remove('active');
+//         });
+
+//         // Add the 'active' class to the clicked link
+//         event.target.classList.add('active');
+//     }
+
+//     // Add click event listeners to navigation links
+//     navLinks.forEach(link => {
+//         link.addEventListener('click', handleNavClick);
+//     });
+// });
