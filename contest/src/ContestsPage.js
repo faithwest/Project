@@ -2,17 +2,15 @@ function ContestList() {
     const [contests, setContests] = useState([]);
   
     useEffect(() => {
-      // Inside the useEffect, fetch data from the API
       fetch("https://kontests.net/api/v1/all")
         .then((response) => response.json())
         .then((data) => {
-          // Update the state with the fetched data
           setContests(data);
         })
         .catch((error) => {
           console.error("Error fetching data: ", error);
         });
-    }, []); // The empty dependency array ensures this effect runs once on component mount
+    }, []); 
   
     return (
       <div>
