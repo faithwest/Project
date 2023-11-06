@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import Home from './Home';
 import Contact from './Contact';
 import ContestList from './ContestsList';
+import Header from './Header'; 
+
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
+            <li>
+        <Header /> 
+        </li>
           </ul>
         </nav>
 
