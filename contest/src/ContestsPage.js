@@ -4,13 +4,10 @@ function ContestList() {
     useEffect(() => {
       fetch("https://kontests.net/api/v1/all")
         .then((response) => response.json())
-        .then((data) => {
-          setContests(data);
-        })
-        .catch((error) => {
-          console.error("Error fetching data: ", error);
-        });
-    }, []); 
+        .then((data) => setContests(data));
+
+        },
+    []); 
   
     return (
       <div>
@@ -28,7 +25,7 @@ function ContestList() {
           </thead>
           <tbody>
             {contests.map((contest, index) => (
-              <tr key={index}>
+              <tr key={item.id}>
                 <td>{contest.name}</td>
                 <td>{contest.site}</td>
                 <td>{new Date(contest.start_time).toUTCString()}</td>

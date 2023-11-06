@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import Home from './Home';
-import About from './About';
 import Contact from './Contact';
+import ContestList from './ContestsPage';
 
 function App() {
   return (
@@ -24,8 +24,9 @@ function App() {
 
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
+          <Route path="/contestlist" component={ContestList} />
+
         </Switch>
       </div>
     </BrowserRouter>
